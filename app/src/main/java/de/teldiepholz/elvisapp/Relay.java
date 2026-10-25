@@ -16,8 +16,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * Zugriff auf das Cloud-Relay (apps/relay in ELVIS). Blockiert – nur aus einem Hintergrund-Thread aufrufen.
- * Protokoll: packages/shared/src/applink.ts.
+ * Zugriff auf das Cloud-Relay (tel-diepholz/elvis-relay). Blockiert – nur aus einem Hintergrund-Thread aufrufen.
+ * Protokoll: src/protocol.ts im Relay bzw. packages/shared/src/applink.ts in ELVIS.
  */
 final class Relay {
     private static final int TIMEOUT_MS = 15_000;

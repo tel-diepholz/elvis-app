@@ -4,8 +4,8 @@ Kleine Android-App, mit der Einsatzkräfte ihre Position an den Einsatzleitwagen
 [ELVIS](https://github.com/tel-diepholz/elvis) senden. Die Einsatzleitung koppelt die App in der Kräfteübersicht mit
 einer Einheit, danach erscheint die Einheit auf der Lagekarte.
 
-Die Positionen laufen über das Cloud-Relay von ELVIS (`apps/relay`, Cloudflare Worker). Der ELW holt sie dort ab und
-braucht deshalb keine öffentliche Adresse. Einrichtung des Relays: ELVIS-README, Abschnitt „App-Anbindung“.
+Die Positionen laufen über das Cloud-Relay [ELVIS Relay](https://github.com/tel-diepholz/elvis-relay) (Cloudflare
+Worker unter `https://elvis-app.h2com.eu`). Der ELW holt sie dort ab und braucht deshalb keine öffentliche Adresse.
 
 ## Ablauf
 
@@ -84,7 +84,7 @@ Ohne Secrets signiert der Build mit dem Debug-Schlüssel und warnt.
 
 - Das App Bundle (`.aab`) aus dem Release hochladen. Mit „Play App Signing“ wird der Schlüssel oben zum
   Upload-Schlüssel.
-- **Datenschutzerklärung:** `<relay>/datenschutz`. Vorher in `apps/relay/src/privacy.ts` den Betreiber ergänzen.
+- **Datenschutzerklärung:** `<relay>/datenschutz`. Vorher in elvis-relay unter `src/privacy.ts` den Betreiber ergänzen.
 - **Vordergrunddienst „location“:** In der Play Console unter *App-Inhalte → Berechtigungen für Dienste im
   Vordergrund* begründen, etwa „Übermittelt während eines Feuerwehreinsatzes den Standort der Einsatzkraft an die
   Einsatzleitung, solange die Kopplung besteht; sichtbar durch eine dauerhafte Benachrichtigung und jederzeit

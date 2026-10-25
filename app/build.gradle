@@ -7,7 +7,7 @@ def tag = System.getenv('GITHUB_REF_TYPE') == 'tag' ? System.getenv('GITHUB_REF_
 def versionFromTag = tag?.startsWith('v') ? tag.substring(1) : '0.0.0-dev'
 def buildNumber = (System.getenv('GITHUB_RUN_NUMBER') ?: '1') as int
 
-// Vorgabe für das Cloud-Relay (apps/relay in ELVIS); in der App unter „Relay-Adresse“ änderbar.
+// Vorgabe für das Cloud-Relay (tel-diepholz/elvis-relay); in der App unter „Relay-Adresse“ änderbar.
 // Für ein eigenes Relay beim Bauen ELVIS_APP_RELAY_URL setzen (Repository-Variable).
 def relayUrl = System.getenv('ELVIS_APP_RELAY_URL') ?: 'https://elvis-app.h2com.eu'
 
