@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ELVIS Ortung</string>
+    <string name="title">ELVIS Ortung</string>
+    <string name="state_unpaired">Nicht gekoppelt</string>
+    <string name="label_device_id">App-ID</string>
+    <string name="label_code">Code</string>
+    <string name="hint_pair">Die Einsatzleitung trägt App-ID und Code in ELVIS ein: Kräfte → Smartphone-Symbol bei deiner Einheit. Danach startet die Ortung von selbst.</string>
+    <string name="label_paired">Gekoppelt mit</string>
+    <string name="paired_unknown">Einheit im Einsatz</string>
+    <string name="tracking_on">Ortung läuft – Position alle 10 Minuten oder ab 10 m Bewegung</string>
+    <string name="tracking_off">Ortung startet …</string>
+    <string name="tracking_stopped">Ortung gestoppt</string>
+    <string name="last_sent">Zuletzt gesendet um %1$s</string>
+    <string name="last_sent_never">Noch keine Position gesendet</string>
+    <string name="hint_paired">Die Ortung endet von selbst, wenn die Einsatzleitung entkoppelt, die Einheit entlässt oder den Einsatz beendet.</string>
+    <string name="action_start">Ortung starten</string>
+    <string name="action_stop">Ortung stoppen</string>
+    <string name="hint_location_off">Standort ist am Gerät ausgeschaltet – bitte in den Schnelleinstellungen einschalten.</string>
+    <string name="error_relay">Relay nicht erreichbar – neuer Versuch läuft</string>
+    <string name="error_register">Anmeldung beim Relay fehlgeschlagen – Internetverbindung prüfen</string>
+    <string name="permission_denied">Ohne Standortberechtigung kann die App keine Position senden.</string>
+    <string name="relay_button">Relay-Adresse</string>
+    <string name="relay_title">Relay-Adresse</string>
+    <string name="relay_hint">Adresse des ELVIS-Relays, z.&#160;B. https://elvis-relay.example.workers.dev. Gibt die Feuerwehr vor.</string>
+    <string name="relay_invalid">Bitte eine Adresse mit https:// eingeben.</string>
+    <string name="save">Speichern</string>
+    <string name="reset_button">Neue App-ID</string>
+    <string name="reset_title">Neue App-ID?</string>
+    <string name="reset_message">Die bisherige App-ID wird gelöscht, eine bestehende Kopplung endet. Die App zeigt danach eine neue ID und einen neuen Code.</string>
+    <string name="reset_confirm">Neue App-ID</string>
+    <string name="battery_button">Akku-Optimierung</string>
+    <string name="battery_unavailable">Dieses Gerät bietet die Einstellung nicht an.</string>
+    <string name="privacy_button">Datenschutz</string>
+    <string name="channel_name">Ortung</string>
+    <string name="notification_title">ELVIS-Ortung aktiv</string>
+    <string name="notification_text">Position wird an den Einsatzleitwagen gesendet</string>
+    <string name="notification_text_label">Position für %1$s</string>
+</resources>

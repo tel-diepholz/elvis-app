@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/icon"
+            android:drawablePadding="12dp"
+            android:gravity="center_vertical"
+            android:text="@string/title"
+            android:textColor="@color/text"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Ungekoppelt: App-ID und Code zum Eintragen in ELVIS -->
+        <LinearLayout
+            android:id="@+id/unpaired"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/state_unpaired"
+                android:textColor="@color/warn"
+                android:textSize="18sp" />
+
+            <TextView
+                style="@style/Label"
+                android:text="@string/label_device_id" />
+
+            <TextView
+                android:id="@+id/device_id"
+                style="@style/BigValue" />
+
+            <TextView
+                style="@style/Label"
+                android:text="@string/label_code" />
+
+            <TextView
+                android:id="@+id/code"
+                style="@style/BigValue" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/hint_pair"
+                android:textColor="@color/muted"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <!-- Gekoppelt: Einheit, Ortung, Start/Stopp -->
+        <LinearLayout
+            android:id="@+id/paired"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/Label"
+                android:text="@string/label_paired" />
+
+            <TextView
+                android:id="@+id/label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/ok"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tracking_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/text"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/last_sent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/muted"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/toggle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:minHeight="64dp"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/hint_paired"
+                android:textColor="@color/muted"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/warn"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:minHeight="32dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/relay"
+                style="@style/SmallButton"
+                android:text="@string/relay_button" />
+
+            <Button
+                android:id="@+id/reset"
+                style="@style/SmallButton"
+                android:text="@string/reset_button" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/battery"
+                style="@style/SmallButton"
+                android:text="@string/battery_button" />
+
+            <Button
+                android:id="@+id/privacy"
+                style="@style/SmallButton"
+                android:text="@string/privacy_button" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
