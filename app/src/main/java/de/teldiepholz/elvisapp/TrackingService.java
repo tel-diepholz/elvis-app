@@ -41,6 +41,8 @@ public class TrackingService extends Service implements LocationListener {
     private static final long STATUS_MS = 2 * 60_000;
     /** Netzwerkortung nur nehmen, wenn das GPS so lange nichts geliefert hat */
     private static final long GPS_PREFERRED_MS = 90_000;
+    /** Ältere Ortungen (z. B. die letzte bekannte beim Start) gelten nur vorläufig */
+    private static final long FRESH_MS = 2 * 60_000;
 
     private final Handler handler = new Handler(Looper.getMainLooper());
     private final Runnable tick = this::onTick;
@@ -51,6 +53,8 @@ public class TrackingService extends Service implements LocationListener {
     private long lastContact;
     private boolean busy;
     private boolean started;
+    /** Vorläufige (veraltete) Position schon gemeldet – nicht bei jedem Takt erneut */
+    private boolean staleSent;
 
     static void start(Context c) {
         c.startForegroundService(new Intent(c, TrackingService.class));
@@ -97,7 +101,10 @@ public class TrackingService extends Service implements LocationListener {
         if (!started) {
             started = true;
             Prefs.setTracking(this, true);
+            Prefs.clearSent(this);
             requestUpdates();
+            // Gleich nach dem Koppeln bzw. Start melden – mit der letzten bekannten Position, falls vorhanden
+            maybeSend();
             handler.postDelayed(tick, TICK_MS);
         }
         return START_STICKY;
@@ -171,10 +178,17 @@ public class TrackingService extends Service implements LocationListener {
         Location l = latest;
         if (l == null || busy) return;
         long now = System.currentTimeMillis();
-        if (!SendRule.shouldSend(Prefs.lastLat(this), Prefs.lastLon(this), Prefs.lastSent(this), l.getLatitude(), l.getLongitude(), now)) return;
+        long lastSent = Prefs.lastSent(this);
+        // Vor der ersten frischen Meldung zählt eine veraltete Position (z. B. die letzte bekannte beim Start) nur
+        // vorläufig: sie geht einmal sofort raus, und die erste frische Ortung folgt ebenfalls sofort
+        boolean provisional = lastSent == 0 && now - l.getTime() > FRESH_MS;
+        if (provisional ? staleSent : !SendRule.shouldSend(Prefs.lastLat(this), Prefs.lastLon(this), lastSent, l.getLatitude(), l.getLongitude(), now)) return;
         Float accuracy = l.hasAccuracy() ? l.getAccuracy() : null;
         Float battery = battery();
-        run(relay -> relay.sendPosition(l.getLatitude(), l.getLongitude(), accuracy, l.getTime(), battery), () -> Prefs.setSent(this, l.getLatitude(), l.getLongitude(), now));
+        run(relay -> relay.sendPosition(l.getLatitude(), l.getLongitude(), accuracy, l.getTime(), battery), () -> {
+            if (provisional) staleSent = true;
+            else Prefs.setSent(this, l.getLatitude(), l.getLongitude(), now);
+        });
     }
 
     private void checkStatus() {
@@ -215,6 +229,8 @@ public class TrackingService extends Service implements LocationListener {
                         return;
                     }
                     getSystemService(NotificationManager.class).notify(NOTIFICATION_ID, notification());
+                    // Während der Anfrage eingetroffene Ortung nicht bis zum nächsten Takt liegen lassen
+                    maybeSend();
                 } else if (err instanceof Relay.RelayException && ((Relay.RelayException) err).status == 401) {
                     // Relay kennt die App nicht mehr (z. B. lange nicht genutzt): neu anmelden über die Oberfläche
                     Prefs.clearRegistration(this);

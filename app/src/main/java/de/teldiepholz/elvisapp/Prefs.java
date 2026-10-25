@@ -108,6 +108,11 @@ final class Prefs {
         return Double.longBitsToDouble(prefs(c).getLong(KEY_LAST_LON, 0));
     }
 
+    /** Beim Start der Ortung: die erste Position geht sofort raus, unabhängig von früheren Meldungen */
+    static void clearSent(Context c) {
+        prefs(c).edit().remove(KEY_LAST_SENT).apply();
+    }
+
     static void setSent(Context c, double lat, double lon, long at) {
         prefs(c).edit().putLong(KEY_LAST_LAT, Double.doubleToRawLongBits(lat)).putLong(KEY_LAST_LON, Double.doubleToRawLongBits(lon))
                 .putLong(KEY_LAST_SENT, at).remove(KEY_ERROR).apply();

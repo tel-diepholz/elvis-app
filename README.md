@@ -14,8 +14,9 @@ Worker unter `https://elvis-relay.hhansen06.workers.dev`). Der ELW holt sie dort
 3. Die App erkennt die Kopplung innerhalb von 10 Sekunden. Sie fragt nach der Standortberechtigung (und ab Android 13
    nach Benachrichtigungen) und startet die Ortung.
 4. Solange die Ortung läuft, steht eine Benachrichtigung „ELVIS-Ortung aktiv“ in der Leiste, mit Knopf „Ortung
-   stoppen“. Die App meldet die erste Position sofort, danach ab 10 m Bewegung und spätestens alle 10 Minuten,
-   auch bei ausgeschaltetem Bildschirm.
+   stoppen“. Die App meldet die erste Position sofort, gleich nach dem Koppeln bzw. Start. Kennt das Telefon
+   nur eine ältere Position, geht diese sofort raus und die erste frische Ortung gleich hinterher. Danach meldet
+   die App ab 10 m Bewegung und spätestens alle 10 Minuten, auch bei ausgeschaltetem Bildschirm.
 5. Die Ortung endet von selbst, wenn ELVIS die Kopplung beendet: beim Entkoppeln, beim Entlassen der Einheit oder
    mit dem Einsatzende. Die App zeigt danach wieder ID und einen neuen Code.
 
