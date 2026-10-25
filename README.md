@@ -42,9 +42,9 @@ gekoppelt wird.
 
 ## Relay-Adresse
 
-Die Vorgabe wird beim Bauen eingesetzt, aus der Repository-Variable `ELVIS_APP_RELAY_URL`
-(*Settings → Secrets and variables → Actions → Variables*), z. B. `https://elvis-relay.<konto>.workers.dev`.
-In der App lässt sie sich unter „Relay-Adresse“ ändern. Ohne Vorgabe fragt die App beim ersten Start danach.
+Vorgabe ist **`https://elvis-app.h2com.eu`**, in der App unter „Relay-Adresse“ änderbar. Wer ein eigenes Relay
+betreibt, setzt beim Bauen die Repository-Variable `ELVIS_APP_RELAY_URL`
+(*Settings → Secrets and variables → Actions → Variables*).
 HTTP ist nur für `10.0.2.2` und `localhost` erlaubt, zum Testen mit `wrangler dev` im Emulator.
 
 ## Bauen

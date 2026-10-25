@@ -218,7 +218,7 @@ public class MainActivity extends Activity implements SharedPreferences.OnShared
         EditText input = new EditText(this);
         input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_URI);
         input.setSingleLine(true);
-        input.setHint("https://elvis-relay.example.workers.dev");
+        input.setHint(BuildConfig.RELAY_URL);
         String current = Prefs.relay(this);
         if (current != null) input.setText(current);
         AlertDialog dialog = new AlertDialog.Builder(this)
