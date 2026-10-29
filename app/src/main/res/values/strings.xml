@@ -22,7 +22,7 @@
     <string name="permission_denied">Ohne Standortberechtigung kann die App keine Position senden.</string>
     <string name="relay_button">Relay-Adresse</string>
     <string name="relay_title">Relay-Adresse</string>
-    <string name="relay_hint">Adresse des ELVIS-Relays, Vorgabe: https://elvis-relay.hhansen06.workers.dev. Nur ändern, wenn die Feuerwehr ein eigenes Relay betreibt.</string>
+    <string name="relay_hint">Adresse des ELVIS-Relays, Vorgabe: https://relay.einsatzleitwagen.app. Nur ändern, wenn die Feuerwehr ein eigenes Relay betreibt.</string>
     <string name="relay_invalid">Bitte eine Adresse mit https:// eingeben.</string>
     <string name="save">Speichern</string>
     <string name="reset_button">Neue App-ID</string>

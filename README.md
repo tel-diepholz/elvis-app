@@ -5,7 +5,7 @@ Kleine Android-App, mit der Einsatzkräfte ihre Position an den Einsatzleitwagen
 einer Einheit, danach erscheint die Einheit auf der Lagekarte.
 
 Die Positionen laufen über das Cloud-Relay [ELVIS Relay](https://github.com/tel-diepholz/elvis-relay) (Cloudflare
-Worker unter `https://elvis-relay.hhansen06.workers.dev`). Der ELW holt sie dort ab und braucht deshalb keine öffentliche Adresse.
+Worker unter `https://relay.einsatzleitwagen.app`). Der ELW holt sie dort ab und braucht deshalb keine öffentliche Adresse.
 
 ## Ablauf
 
@@ -43,7 +43,7 @@ gekoppelt wird.
 
 ## Relay-Adresse
 
-Vorgabe ist **`https://elvis-relay.hhansen06.workers.dev`**, in der App unter „Relay-Adresse“ änderbar. Wer ein eigenes Relay
+Vorgabe ist **`https://relay.einsatzleitwagen.app`**, in der App unter „Relay-Adresse“ änderbar. Wer ein eigenes Relay
 betreibt, setzt beim Bauen die Repository-Variable `ELVIS_APP_RELAY_URL`
 (*Settings → Secrets and variables → Actions → Variables*).
 HTTP ist nur für `10.0.2.2` und `localhost` erlaubt, zum Testen mit `wrangler dev` im Emulator.

@@ -9,7 +9,7 @@ def buildNumber = (System.getenv('GITHUB_RUN_NUMBER') ?: '1') as int
 
 // Vorgabe für das Cloud-Relay (tel-diepholz/elvis-relay); in der App unter „Relay-Adresse“ änderbar.
 // Für ein eigenes Relay beim Bauen ELVIS_APP_RELAY_URL setzen (Repository-Variable).
-def relayUrl = System.getenv('ELVIS_APP_RELAY_URL') ?: 'https://elvis-relay.hhansen06.workers.dev'
+def relayUrl = System.getenv('ELVIS_APP_RELAY_URL') ?: 'https://relay.einsatzleitwagen.app'
 
 // Signierschlüssel aus Umgebungsvariablen (GitHub-Secrets, siehe README). Ohne Schlüssel wird mit dem
 // Debug-Schlüssel signiert – solche Builds lassen sich nicht über eine Version mit echtem Schlüssel aktualisieren.
